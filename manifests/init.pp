@@ -1,23 +1,8 @@
 class passenger (
 	$webserver = 'httpd'
 ) {
-  # Package is available only for RedHat and CentOS 5 
-  package {
-    "rubygem-passenger": 
-       ensure => $operatingsystemrelease ? {
-            6.0 => "latest",
-            * => "2.2.2-1",
-       },
-       require => Package["$webserver"],
-       before => Service["$webserver"],
-  }
+    include passenger::packages
+    include passenger::config
 
-  file {
-    "/etc/$webserver/conf.d/passenger.conf":
-      content => template('modules/passenger/passenger.conf'),
-      mode => 644,
-      owner=> root,
-      group => root,
-      notify => Service ["$webserver"],
-  }
+    Class['passenger::packages'] -> Class['passenger::config']
 }
