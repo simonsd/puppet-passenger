@@ -1,10 +1,14 @@
 class passenger::config {
   file {
-    "/etc/$webserver/conf.d/passenger.conf":
-      content => template('passenger/passenger.conf'),
-      mode => 644,
-      owner=> root,
-      group => root,
-      notify => Service ["$webserver"],
+    'passenger.conf':
+       path => $operatingsystem ? {
+           centos => "/etc/httpd/conf.d/passenger.conf",
+           debian => "/etc/apache2/conf.d/passenger.conf",
+       },
+       content => template('passenger/passenger.conf'),
+       mode => 644,
+       owner=> root,
+       group => root,
+       notify => Service ["$webserver"],
   }
 }
