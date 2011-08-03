@@ -5,7 +5,7 @@ class passenger::ssl {
   } 
   file {
     "/etc/httpd/conf.d/ssl.conf":
-      source => "puppet:///modules/passenger/etc/httpd/conf.d/ssl.conf",
+      content => template('modules/passenger/etc/httpd/conf.d/ssl.conf'),
       mode => 0644, owner => root, group => root,
       notify => Exec["reload-apache2"];
     ["/var/cache/mod_ssl", "/var/cache/mod_ssl/scache"]:
