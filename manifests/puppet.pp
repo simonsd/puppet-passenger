@@ -8,9 +8,9 @@ package  { "rubygem-rack":
 
 
 file {
-	"/etc/httpd/conf.d/puppetmaster.conf":
+	"/etc/$webserver/conf.d/puppetmaster.conf":
 		content => template('passenger/puppetmaster.conf'),
-	  	notify => Service["httpd"];
+	  	notify => Service["$webserver"];
 
 	"/usr/share/puppet/rack":
 		ensure => directory;

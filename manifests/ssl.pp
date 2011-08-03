@@ -1,16 +1,16 @@
 class passenger::ssl {
   package { [ "mod_ssl" , "mod_authz_ldap" ]:	
-    ensure => present, require => Package["httpd"], 
-    notify => Service["httpd"]
+    ensure => present, require => Package["webserver"], 
+    notify => Service["$webserver"]
   } 
   file {
-    "/etc/httpd/conf.d/ssl.conf":
+    "/etc/$webserver/conf.d/ssl.conf":
       content => template('passenger/etc/httpd/conf.d/ssl.conf'),
       mode => 0644, owner => root, group => root,
       notify => Exec["reload-apache2"];
     ["/var/cache/mod_ssl", "/var/cache/mod_ssl/scache"]:
       ensure => directory,
       owner => apache, group => root, mode => 0750,
-      notify => Service["httpd"];
+      notify => Service["$webserver"];
   }
 }
