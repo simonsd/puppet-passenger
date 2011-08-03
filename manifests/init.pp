@@ -1,3 +1,5 @@
+import 'classes/*'
+
 class passenger (
 	$webserver = 'httpd'
 ) {
