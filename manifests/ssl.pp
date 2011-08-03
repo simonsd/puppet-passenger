@@ -5,7 +5,7 @@ class passenger::ssl {
   } 
   file {
     "/etc/$webserver/conf.d/ssl.conf":
-      content => template('passenger/ssl.conf'),
+      content => template('passenger/ssl.conf.erb'),
       mode => 0644, owner => root, group => root,
       notify => Exec["reload-apache2"];
     ["/var/cache/mod_ssl", "/var/cache/mod_ssl/scache"]:

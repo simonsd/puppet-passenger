@@ -5,7 +5,7 @@ class passenger::config {
            centos => "/etc/httpd/conf.d/passenger.conf",
            debian => "/etc/apache2/conf.d/passenger.conf",
        },
-       content => template('passenger/passenger.conf'),
+       content => template('passenger/passenger.conf.erb'),
        mode => 644,
        owner=> root,
        group => root,
