@@ -9,7 +9,7 @@ package  { "rubygem-rack":
 
 file {
 	"/etc/httpd/conf.d/puppetmaster.conf":
-		content => template('modules/passenger/puppetmaster.conf'),
+		content => template('passenger/puppetmaster.conf'),
 	  	notify => Service["httpd"];
 
 	"/usr/share/puppet/rack":
