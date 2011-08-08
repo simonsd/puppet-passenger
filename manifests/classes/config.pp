@@ -11,4 +11,9 @@ class passenger::config {
        group => root,
        notify => Service ["$webserver"],
   }
+
+  exec {
+	'install modules':
+		command => 'passenger-install-apache2-module --auto';
+  }
 }
