@@ -1,10 +1,3 @@
-<% if operatingsystemrelease != '6.0' %>LoadModule passenger_module /usr/lib/ruby/gems/1.8/gems/passenger-2.2.2/ext/apache2/mod_passenger.so
-PassengerRoot /usr/lib/ruby/gems/1.8/gems/passenger-2.2.2<% else %>LoadModule passenger_module /usr/lib64/ruby/gems/1.8/gems/passenger-2.2.7/ext/apache2/mod_passenger.so
-PassengerRoot /usr/lib64/ruby/gems/1.8/gems/passenger-2.2.7<% end %>
-PassengerRuby /usr/bin/ruby
-PassengerMaxPoolSize 30
-PassengerPoolIdleTime 1500
-PassengerMaxRequests 1000
-PassengerStatThrottleRate 120
-RackAutoDetect Off
-RailsAutoDetect Off
+LoadModule passenger_module <%= scope.lookupvar('ruby::lib_dir') %>/gems/1.8/gems/passenger-<%= version %>/ext/apache2/mod_passenger.so
+PassengerRoot <%= scope.lookupvar('ruby::lib_dir') %>/gems/1.8/gems/passenger-<%= version %>
+PassengerRuby <%= scope.lookupvar('ruby::bin_dir') %>/ruby
