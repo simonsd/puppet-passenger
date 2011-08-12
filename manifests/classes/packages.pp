@@ -4,7 +4,7 @@ class passenger::packages {
        ensure => "$version",
        name => passenger,
        provider => gem,
-       require => Package["$webserver"],
+       require => Package["$webserver", "$webserver-devel"],
        before => Service["$webserver"];
   }
 }
