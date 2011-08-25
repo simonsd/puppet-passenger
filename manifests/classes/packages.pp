@@ -1,10 +1,10 @@
 class passenger::packages {
   package {
     "rubygem-passenger": 
-       ensure => "$version",
+       ensure => "$passenger::version",
        name => passenger,
        provider => gem,
-       require => Package["$webserver", "$webserver-devel"],
-       before => Service["$webserver"];
+       require => Package["$passenger::webserver", "$passenger::webserver-devel"],
+       before => Service["$passenger::webserver"];
   }
 }
