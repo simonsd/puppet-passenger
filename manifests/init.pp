@@ -6,7 +6,11 @@ class passenger (
 	$version = '3.0.8'
 ) {
 	if $stages == 'no' {
-	    class{'passenger::packages':} -> class{'passenger::config':}
+	    class {
+			'passenger::packages':
+				before => Class['passenger::config'];
+			'passenger::config':;
+		}
 	} else {
 		class {
 			'passenger::packages':
