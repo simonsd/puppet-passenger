@@ -2,6 +2,7 @@ class passenger::config {
   file {
     'passenger.conf':
        path => $::operatingsystem ? {
+           archlinux => '/etc/httpd/conf/passenger.conf',
            centos => "/etc/httpd/conf.d/passenger.conf",
            debian => "/etc/apache2/conf.d/passenger.conf",
        },
