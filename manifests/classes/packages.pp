@@ -4,7 +4,10 @@ class passenger::packages {
        ensure => "$passenger::version",
        name => passenger,
        provider => gem,
-       require => Package["$passenger::webserver", "$passenger::webserver-devel"],
+       require => $::operatingsystem ? {
+			default => Package["$passenger::webserver", "$passenger::webserver-devel"],
+			archlinux => Package["apache"],
+       },
        before => Service["$passenger::webserver"];
   }
 }
