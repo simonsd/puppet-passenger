@@ -18,4 +18,12 @@ class passenger::config {
 		command => 'passenger-install-apache2-module --auto',
 		creates => "$ruby::lib_dir/gems/$ruby::version/gems/passenger-$passenger::version/ext/apache2/mod_passenger.so";
   }
+
+  if $::operatingsystem == 'archlinux' {
+	exec {
+		'include passenger.conf':
+			command => 'echo -e "\n# Passenger config\nInclude conf/extra/passenger.conf" >> /etc/httpd/conf/httpd.conf',
+			require => File['passenger.conf'];
+	}
+  }
 }
