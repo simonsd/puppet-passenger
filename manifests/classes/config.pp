@@ -23,7 +23,7 @@ class passenger::config {
 	exec {
 		'include passenger.conf':
 			command => 'echo -e "\n# Passenger config\nInclude conf/extra/passenger.conf" >> /etc/httpd/conf/httpd.conf',
-			require => File['passenger.conf'];
+			require => File['passenger.conf', 'apache.conf'];
 	}
   }
 }
