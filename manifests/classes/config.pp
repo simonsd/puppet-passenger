@@ -15,7 +15,10 @@ class passenger::config {
 
   exec {
 	'install modules':
-		command => "$ruby::bin_dir/passenger-install-apache2-module --auto",
+		command => $::operatingsystem ? {
+			default => "$ruby::bin_dir/passenger-install-apache2-module --auto",
+			debian => "$ruby::lib_dir/gems/$ruby::version/gems/passenger-$passenger::version/bin/passenger-install-apache2-module --auto",
+		},
 		creates => "$ruby::lib_dir/gems/$ruby::version/gems/passenger-$passenger::version/ext/apache2/mod_passenger.so";
   }
 

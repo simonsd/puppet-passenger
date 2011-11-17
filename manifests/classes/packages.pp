@@ -7,6 +7,7 @@ class passenger::packages {
        require => $::operatingsystem ? {
 			default => Package["$passenger::webserver", "$passenger::webserver-devel"],
 			archlinux => Package["apache"],
+			debian => Package["apache"],
        },
        before => Service["$passenger::webserver"];
   }
