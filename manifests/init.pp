@@ -5,9 +5,9 @@ class passenger (
 	$version = '3.0.8'
 ) {
     class {
-		'passenger::packages':
-			before => Class['passenger::config'];
-		'passenger::config':;
+		'passenger::packages':;
+		'passenger::config':
+			require => Class['passenger::packages'];
 	}
 
     Exec{path=>'/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin'}
