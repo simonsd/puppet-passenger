@@ -5,11 +5,11 @@ class passenger::packages {
       name => passenger,
       provider => gem,
       require => $::operatingsystem ? {
-        default => Package["$passenger::webserver"],
+        default => Package["$apache::apache"],
         archlinux => Package["apache"],
         debian => Package["apache"],
       },
-      before => Service["$passenger::webserver"];
+      before => Service["$apache::apache"];
 
     'curl-devel':
       ensure => installed,

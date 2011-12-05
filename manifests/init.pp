@@ -1,7 +1,6 @@
 import 'classes/*'
 
 class passenger (
-	$webserver = "${apache::apache}",
 	$version = '3.0.8'
 ) {
     class {

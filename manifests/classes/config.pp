@@ -10,7 +10,7 @@ class passenger::config {
        mode => 644,
        owner=> root,
        group => root,
-       notify => Service ["$passenger::webserver"],
+       notify => Service ["$apache::apache"],
   }
 
   exec {
