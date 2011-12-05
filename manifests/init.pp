@@ -5,7 +5,9 @@ class passenger (
 	$version = '3.0.8'
 ) {
     class {
-		'passenger::packages':;
+		'::ruby':;
+		'passenger::packages':
+			require => Class['::ruby'];
 		'passenger::config':
 			require => Class['passenger::packages'];
 	}
