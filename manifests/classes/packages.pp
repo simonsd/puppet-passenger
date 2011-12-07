@@ -20,5 +20,6 @@ class passenger::packages {
       };
 
     'gcc':;
+    'gcc-c++':;
   }
 }
