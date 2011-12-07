@@ -18,5 +18,7 @@ class passenger::packages {
         centos => 'libcurl-devel',
         debian => 'libcurl4-openssl-dev',
       };
+
+    'gcc':;
   }
 }
