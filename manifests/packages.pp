@@ -32,10 +32,14 @@ class passenger::packages {
   }
 
   package { 'gcc': }
-  package { 'gcc-c++':
+  @package { 'gcc-c++':
     name => $::operatingsystem ? {
       default   => 'gcc-c++',
       archlinux => undef,
     },
+  }
+
+  if $::operatingsystem != 'archlinux' {
+    realize(Package['gcc-c++'])
   }
 }
