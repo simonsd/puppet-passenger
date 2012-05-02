@@ -21,7 +21,7 @@ class passenger::config {
       mode      => '0644',
       owner     => 'root',
       group     => 'root',
-      notify    => Service [$apache::apache],
+      notify    => Service [$apache::params::service_name],
   }
 
   exec {

@@ -16,11 +16,11 @@ class passenger::packages {
     name     => 'passenger',
     provider => 'gem',
     require  => $::operatingsystem ? {
-      default   => Package[$apache::apache],
+      default   => Package[$apache::params::service_name],
       archlinux => Package['apache'],
       debian    => Package['apache'],
     },
-    before   => Service[$apache::apache],
+    before   => Service[$apache::params::service_name],
   }
   package { 'curl-devel':
     ensure  => installed,
