@@ -1,5 +1,5 @@
 class passenger (
-  $version          = '3.0.8'
+  $version          = '3.0.8',
   $max_pool_size    = '6',
   $min_instances    = '0',
   $pool_idle_time   = '300',
